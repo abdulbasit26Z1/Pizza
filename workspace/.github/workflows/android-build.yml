@@ -1,0 +1,62 @@
+name: Build Android APK and AAB
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Set up Java JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Web App
+      run: npm run build
+
+    - name: Install Capacitor Packages
+      run: npm i @capacitor/core @capacitor/cli @capacitor/android
+
+    - name: Initialize Capacitor
+      run: npx cap init react-example com.example.app --web-dir=dist --yes || true
+
+    - name: Add Android Platform
+      run: npx cap add android || true
+
+    - name: Sync Capacitor
+      run: npx cap sync
+
+    - name: Build Android APK (Debug) & AAB (Bundle)
+      run: |
+        cd android
+        ./gradlew assembleDebug
+        ./gradlew bundleDebug
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug-apk
+        path: android/app/build/outputs/apk/debug/app-debug.apk
+
+    - name: Upload AAB Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug-aab
+        path: android/app/build/outputs/bundle/debug/app-debug.aab
