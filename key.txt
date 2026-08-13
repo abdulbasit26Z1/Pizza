@@ -1,0 +1,24 @@
+---------------------------------------------------
+Here are the ownership and the certification details
+of the Pizza 1.0
+---------------------------------------------------
+
+app_name - 						Pizza
+app_alias - 					pizza
+app_author_name - 				My Company
+app_author_organizational - 	My Company
+app_author_organization - 		My Company
+app_author_locality - 			My Company
+app_author_state - 				Sindh
+app_author_country - 			Pakistan
+app_password - 					DZ12Bc8h3rrb
+app_versionName - 				versionName "1.0"
+app_versionCode - 				100
+
+---------------------------------------------------
+The certification was created by WebIntoApp.com at
+the Wednesday 12th of August 2026 08:33:19 AM
+
+https://webintoapp.com
+---------------------------------------------------
+
