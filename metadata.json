@@ -1,0 +1,6 @@
+{
+  "name": "3D Open World Pizza Delivery Simulator",
+  "description": "A 3D open-world city driving simulator where players deliver hot pizzas with 3D car physics, fuel consumption, tire burst mechanics, gas stations, pizza shop order picker, vehicle upgrades, and Play Store export kit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
